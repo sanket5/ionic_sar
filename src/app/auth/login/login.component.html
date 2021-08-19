@@ -1,0 +1,77 @@
+
+<body>
+    
+
+
+  <div class="split_container">
+      <div class="split_container__left">
+          <div class="centered">
+              <div  id="main" style="font-family: babloo-bold; color: rgb(54, 54, 54);">
+                  <h2> Welcome to Sarvedyam !!</h2>
+              </div> 
+              <img src="https://res.cloudinary.com/djvzvheih/image/upload/v1620720768/delivery_boy.png"
+              style="width: 300px;" >
+              <div  id="main" style="font-family: babloo-regular; color: rgb(80, 80, 80); ">
+                  <h4> Fresh farm milk at your door steps. </h4>
+               </div> 
+          </div>
+        </div>
+        <div class="split_container__right">
+          <div class="form" >      
+              <div class="form__card">  
+                  <img class="form__card__img"
+                      src="https://res.cloudinary.com/djvzvheih/image/upload/v1615458014/Comingsoon_Imgs/Sarvedyam_brand_logo_512.png" 
+                      style="width: 140px; align-items: center;"
+                      alt="Sarvedyam Logo">
+  
+                  <div class="form__card__banner">
+                      <span>   Login to your account </span>
+                  </div>
+  
+                  
+                  <form (ngSubmit)="login()" [formGroup]="loginForm">
+                      <div class="form__card__field">
+                          <mat-form-field appearance="outline" >
+                              <mat-label>Mobile Number</mat-label>
+                              <input matInput type="number"  formControlName="mobileNo" required >
+                              <mat-hint *ngIf="loginControls().mobileNo.touched && loginControls().mobileNo.errors?.required"> Feild Mendatory </mat-hint>
+                              <mat-hint *ngIf="loginControls().mobileNo.touched && loginControls().mobileNo.errors?.lengthError"> Invalid Mobile Number </mat-hint>
+      
+                          </mat-form-field> 
+                      </div>
+                      <div class="form__card__field">
+                          <mat-form-field appearance="outline" >
+                              <mat-label>Password</mat-label>
+                              <input  matInput [type]="hide ? 'password' : 'text'" formControlName="password" required >
+                              <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                              <mat-hint *ngIf="loginControls().password.touched && loginControls().password.errors"> Feild Mendatory </mat-hint>
+                            </mat-form-field> 
+                      </div>
+  
+                      <div *ngIf="loginError" class="loginError">
+                          <span> Invalid Mobile Number or Password! Please Try Again </span>
+                      </div>
+                      <div class="form__card__forgot">
+                          <a routerLink="/auth/forgot"> Forgot Password ?</a>
+                      </div>
+                      
+                      <div class="form__card__buttons"> 
+                           <button  mat-button  style="margin: 5px;" type="submit" [disabled]="loginForm.invalid" > Log In </button>
+                           <button mat-button  style="margin: 5px;" disabled=true > Register </button>
+                      </div>
+  
+  
+                  </form>
+                   
+              </div>
+          </div>
+        </div>
+  </div>
+  
+  
+  
+  <!-- <div class="u_margin_b">
+      extra div for margin buttom.
+  </div> -->
+  </body>
+  

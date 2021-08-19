@@ -1,0 +1,190 @@
+
+@import "../../../scss/global.scss";
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.div{
+    font-family:  babloo-regular;
+}
+
+.form{
+    width: 60% !important;
+    justify-content: center;
+    color: transparent;
+    @media only screen and (max-width: 676px) {
+        width: 80% !important;
+       }
+    &__card{
+        margin: 0 auto;
+        background: transparent;
+        border-radius: 10px;
+        border: 0px solid $primary-color;
+        padding: 2%;
+        color: rgb(43, 43, 43);
+        height: 100%;
+        transform: translateX(-10%);
+        @media only screen and (max-width: 676px) {
+            transform: translateX(0);
+        }
+        // position: absolute;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%, -50%);
+        // text-align: center;
+
+        &__field{
+            display: flex;
+            justify-content: center;
+            mat-form-field{
+            width: 100% !important;
+            mat-hint{
+                color:  red;
+            }
+        }
+        }
+
+        &__img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+            margin-bottom: 50px;
+        }
+
+        &__banner{
+            font-family:  babloo-regular;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            font-size: large;
+            flex-basis: 100%;
+            color: rgb(26, 26, 26);
+            margin: 10px;
+        }
+
+        // &:hover{
+        //     box-shadow: 0 0 0.5px 1px rgb(169,169,169);
+        // }
+
+        &__forgot{
+            font-family:  babloo-regular;
+            display: flex;
+            justify-content: left;
+            margin: -10px 10px 10px 10px;
+            & a, 
+            & a:visited,
+            & a:active{
+                color: $navigationPrimary-color
+            }
+        }
+
+        &__buttons{
+            display: flex;
+            justify-content: center;
+            .mat-button{
+                margin: 10px 50px;
+            }
+        }
+    }
+    
+}   
+
+
+.loginError{
+    color:  rgb(155, 0, 0);
+    padding: 5px;
+    margin: -20px 5px 20px 5px;
+    font-family:  babloo-regular;
+}
+
+//Misceleneous css for materials custom resets
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+    padding: 1px 30px !important;
+    margin-top: -0.25em;
+    position: relative;
+}
+
+::ng-deep .mat-form-field-outline {
+    color:$primary-color !important;
+}
+// to change label color
+::ng-deep .mat-form-field-label {
+   color:black !important;
+   
+}
+
+form{
+    ::ng-deep .mat-form-field-outline-start {
+        border-radius: 28px 0 0 28px !important;
+        min-width: 28px !important;
+      }
+      
+      ::ng-deep .mat-form-field-outline-end {
+        border-radius: 0 28px 28px 0 !important;
+      }
+}
+
+
+
+/* Split the screen in half */
+.split_container {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /* Control the left side */
+    &__left {
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 50%;
+        div{
+            transform: translateX(10%);
+        }
+        @media only screen and (max-width: 676px) {
+            width: 100%;
+            order: 2;
+            position: fixed;
+            top: 60%;
+            left: -48%;
+            transform: scale(0.9);
+            z-index: -1;
+            #main{
+                display: none;
+            }
+          }
+
+    } 
+
+      /* Control the right side */
+    &__right {
+        display: flex;
+        justify-content: center;
+        width: 50%;
+        background-color: #F5F5F5;
+        @media only screen and (max-width: 676px) {
+            width: 100%;
+            order: 1;         
+            background-color: rgba(#F5F5F5,0.5)
+          }
+
+    }
+  }
+  
+
+
+  
+  /* If you want the content centered horizontally and vertically */
+//   .centered {
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     text-align: center;
+//   }
+  

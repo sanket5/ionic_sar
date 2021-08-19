@@ -1,0 +1,24 @@
+
+// 
+.u_margin_b{
+    margin-bottom: 100px;
+}
+.u-full-width-feild{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90% !important;
+    mat-form-field{
+        width: 800%;
+    mat-hint{
+        color:  red;
+    }
+    }
+}
+
+.back_button{
+    display: flex;
+    justify-content: left;
+    margin: 20px;
+}

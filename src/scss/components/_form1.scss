@@ -1,0 +1,56 @@
+
+
+.feature__card{
+    width: 70%;
+    margin-top: 30px;
+    transform: translateX(15%);
+    &__content{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 10px;
+        padding: 0 5%;
+    }
+    &__banner{
+        text-align: center;
+        font-weight: bold;
+    }
+    &__title{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    &__field{
+        width: 60%;
+        mat-form-field{
+            width: 100%;
+            textarea{
+                height: 50px;
+            }
+        }
+    }
+    &__button{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__main-img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+        img{
+            width: 150px;
+            height: 150px;
+        }
+    }
+}
+
+@media(max-width: 480px) {
+    .feature__card__field{
+        width: 90%;
+    }
+}

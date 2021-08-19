@@ -1,0 +1,19 @@
+
+
+.btn-secondary{
+    padding: 10px;
+    background: $dark-gray;
+    border: 2px solid $primaryLight-color;
+    color: $primary-color;
+    border-radius: 5px;
+    cursor: pointer;
+    &:active{
+        background: white;
+    }
+    &:disabled{
+        box-shadow: none;
+        color: $primaryLight-color ;
+    }
+
+
+}
