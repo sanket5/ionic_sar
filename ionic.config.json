@@ -1,0 +1,7 @@
+{
+  "name": "sarvedyam",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
