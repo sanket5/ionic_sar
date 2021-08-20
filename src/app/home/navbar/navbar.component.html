@@ -1,0 +1,109 @@
+
+<mat-toolbar>
+  <mat-toolbar-row style="margin: 0;  padding: 0;">
+      <div class="toolbar_items">
+          <div class="banner">
+              <button mat-icon-button class="toolar_button" aria-label="Example icon-button with menu icon" (click)="toggleNabvbar()">
+                  <mat-icon>menu</mat-icon>
+              </button>
+              <span> Sarvedyam </span>
+          </div>
+
+          <div class="action">
+              <ng-container *ngIf="loggedUser; else loginButtons">
+                  <div class="other_options">
+                      <span class="dropdown_label" > <mat-icon>  person </mat-icon>  </span>
+                      <div class="dropdown_misc">
+                          <div class="dropdown">
+                              <div class="drodown_link" >  <mat-icon> person </mat-icon>  &nbsp; My Profile </div>
+                              <div class="drodown_link" (click)="logOut()">   <mat-icon> logout </mat-icon> &nbsp; Logout</div>
+                          </div>
+                      </div>
+                  </div>
+              </ng-container>
+              <ng-template #loginButtons >
+                  <button mat-raised-button routerLink="/auth/login">Log In </button>
+                  <!-- <button  mat-raised-button routerLink="/auth/register"  >Register </button> -->
+              </ng-template>
+              
+          </div>
+      </div>
+  </mat-toolbar-row> 
+</mat-toolbar> 
+<mat-sidenav-container>
+  <mat-sidenav mode="side" [opened]="navIsOpen" [mode]="(screenWidth > 740) ? 'side' : 'over'"  >
+      <div *ngIf="loggedUser; else guest" class="user">
+          <div class="profilePic">
+              <img src="https://res.cloudinary.com/djvzvheih/image/upload/v1628176400/Web%20App%20Asset/images/img-user.png" alt="profilePic">
+          </div>
+          <div  class="userName">
+              {{ loggedUser.name }}
+          </div>
+      </div>
+      <ng-template #guest >
+          <div class="user">
+              <div class="profilePic">
+                  <mat-icon> person </mat-icon>
+              </div>
+              <div class="userName">
+                  Welcome Guest
+              </div>
+          </div>
+          <div class="spacer"> We are coming live soon </div>
+      </ng-template>
+      <mat-nav-list *ngIf="loggedUser?.type == 'ADM';else CUS" >
+          <div class="spacer"> Dashboard </div>
+          <a mat-list-item routerLink="ad" [routerLinkActive]="['active']" (click)="toggleNabvbarForMobile()" > <mat-icon> dashboard </mat-icon>  &nbsp; Dashboard</a>
+          <div class="spacer"> Manage Orders </div>
+          <a mat-list-item routerLink="ad/orders/upcoming" [routerLinkActive]="['active']"   (click)="toggleNabvbarForMobile()"> <mat-icon> list </mat-icon>  &nbsp; Upcoming Orders </a>
+          <a mat-list-item routerLink="ad/orders/processed" [routerLinkActive]="['active']"   (click)="toggleNabvbarForMobile()"> <mat-icon> list </mat-icon>  &nbsp; Processed Orders </a>
+          <a mat-list-item routerLink="ad/orders/completed" [routerLinkActive]="['active']"   (click)="toggleNabvbarForMobile()"> <mat-icon> list </mat-icon>  &nbsp; Completed Orders </a>
+          <a mat-list-item routerLink="ad/orders/all" [routerLinkActive]="['active']"   (click)="toggleNabvbarForMobile()"> <mat-icon> list </mat-icon>  &nbsp; All Orders </a>
+          <a mat-list-item routerLink="ad/orders/new" [routerLinkActive]="['active']"   (click)="toggleNabvbarForMobile()"> <mat-icon> library_add </mat-icon>  &nbsp; New Order </a>
+
+          <div class="spacer"> Manage Products </div>
+          <a mat-list-item routerLink="ad/product" [routerLinkActive]="['active']"  (click)="toggleNabvbarForMobile()"> <mat-icon> shopping_cart </mat-icon>  &nbsp; Products </a>
+          <div class="spacer"> Manage Users </div>
+          <a mat-list-item [routerLink]="['ad/users/employee']" [state]="{uType:'EMP'}" [routerLinkActive]="['active']"   (click)="toggleNabvbarForMobile()"><mat-icon> person </mat-icon> &nbsp; Employees </a>
+          <a mat-list-item [routerLink]="['ad/users/customer']" [state]="{uType:'CUS'}" [routerLinkActive]="['active']"  (click)="toggleNabvbarForMobile()"><mat-icon> person </mat-icon> &nbsp; Customers </a>
+          <a mat-list-item [routerLink]="['ad/users/admin']" [state]="{uType:'ADM'}" [routerLinkActive]="['active']"  (click)="toggleNabvbarForMobile()"><mat-icon> person </mat-icon> &nbsp; Admins </a>
+          
+          <div class="spacer"> Wallet </div>
+          <a mat-list-item [routerLink]="['ad/wallet/ledger']" [routerLinkActive]="['active']"   (click)="toggleNabvbarForMobile()"><mat-icon> attach_money </mat-icon> &nbsp; Wallet Ledger </a>
+          <a mat-list-item [routerLink]="['ad/wallet/exchanges']" [routerLinkActive]="['active']"   (click)="toggleNabvbarForMobile()"><mat-icon> transfer_within_a_station </mat-icon> &nbsp; Exchange funds </a>
+          <!-- <a mat-list-item [routerLink]="['ad/manage/mapping']" [routerLinkActive]="['active']"   (click)="toggleNabvbarForMobile()"><mat-icon> 360 </mat-icon> &nbsp; Employee to Customer mapping </a> -->
+
+          <div class="spacer"> Misceleneous </div>
+          <a mat-list-item [routerLink]="['ad/manage/leave']" [routerLinkActive]="['active']"   (click)="toggleNabvbarForMobile()"><mat-icon> timelapse </mat-icon> &nbsp; Leaves </a>
+          <a mat-list-item [routerLink]="['ad/manage/leaves']" [routerLinkActive]="['active']"   (click)="toggleNabvbarForMobile()"><mat-icon> event_busy </mat-icon> &nbsp; Track Leaves </a>
+          <a mat-list-item [routerLink]="['ad/manage/mapping']" [routerLinkActive]="['active']"   (click)="toggleNabvbarForMobile()"><mat-icon> 360 </mat-icon> &nbsp; Employee Mapping List </a>
+          <a mat-list-item [routerLink]="['ad/manage/mapping/new']" [routerLinkActive]="['active']"   (click)="toggleNabvbarForMobile()"><mat-icon> 360 </mat-icon> &nbsp; Employee to Customer mapping  </a>
+
+          <div class="spacer">Extras </div>
+          <a mat-list-item [routerLink]="['ad/extras/feedback']" [routerLinkActive]="['active']"  (click)="toggleNabvbarForMobile()"><mat-icon> feedback </mat-icon> &nbsp; Feedback </a>
+          <a mat-list-item [routerLink]="['ad/extras/tresults']"  [routerLinkActive]="['active']"  (click)="toggleNabvbarForMobile()"><mat-icon> check_circle </mat-icon> &nbsp; Test Results </a>
+          <a mat-list-item [routerLink]="['ad/extras/notifications']"  [routerLinkActive]="['active']"  (click)="toggleNabvbarForMobile()"><mat-icon> notification_important </mat-icon> &nbsp; Notifications </a>
+          <a mat-list-item [routerLink]="['ad/manage/qrcode']" [routerLinkActive]="['active']"   (click)="toggleNabvbarForMobile()"><mat-icon> games </mat-icon> &nbsp; QR code generator </a>
+
+          <!-- <div class="spacer">Settings </div>
+          <a mat-list-item routerLink="ad/config" [routerLinkActive]="['active']"  (click)="toggleNabvbarForMobile()"><mat-icon> settings </mat-icon> &nbsp; Global Configurations </a> -->
+      </mat-nav-list>
+      <div class="spacer"></div>
+      <ng-template #CUS>
+      </ng-template>
+      <div class="spacer"></div>
+      <div class="u_margin_b">
+          <!-- extra div for margin buttom. -->
+      </div>
+        
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <div *ngIf="allowNavigation">
+          <router-outlet>
+
+          </router-outlet>
+      </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>  
+

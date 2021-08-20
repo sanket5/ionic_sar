@@ -24,3 +24,93 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+//
+
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "./scss/global.scss";
+@import "./scss/base/theme";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+
+    font-family:  babloo-regular;
+}
+}
+
+.mat-button{
+    background: $primary-color;
+    color:white;
+    font-weight: bold;
+    text-transform: capitalize;
+    border: 0px solid !important;
+} 
+
+// .mat-form-field-appearance-outline .mat-form-field-outline {
+//     color: $primary-color;
+// }
+
+
+
+.mat-icon{
+    color: black;
+}
+
+@font-face{
+    font-family: babloo-bold;
+    src: url('./assets/fonts/BalooChettan2-Bold.ttf');
+}
+
+@font-face{
+    font-family: babloo-regular;
+    src: url('./assets/fonts/BalooChettan2-Regular.ttf');
+}
+
+
+//setting up custom font topography to materials
+@import '~@angular/material/theming';
+
+$custom-typography: mat-typography-config($font-family: babloo-regular);
+@include mat-core($custom-typography);
+
+
+.mat-form-field-label{
+    color: black !important;
+}
+.mat-form-field-underline{
+    background-color:$primary-color !important;
+}
+.mat-hint {
+    color: red !important
+}
+
+.snackBar{
+    position: relative;
+    top: 50px;
+    background: $primary-color;
+    color: black;
+}
+
+//some globale styles
+@media (max-width: 480px) {
+    mat-card{
+        width: 100% !important;
+        transform: translate(0) !important;
+    }
+    .inner_content{
+        margin: 0;
+    }
+}

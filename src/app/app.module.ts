@@ -8,8 +8,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './material.modules';
+import { MiscInterceptor } from './interceptors/misc.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,7 +26,11 @@ import { MaterialModule } from './material.modules';
 
 
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    {
+      provide: HTTP_INTERCEPTORS, useClass:MiscInterceptor, multi: true
+    },
+  ],
   bootstrap: [AppComponent],
   exports:[MaterialModule]
 })

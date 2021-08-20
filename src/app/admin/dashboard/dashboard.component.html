@@ -1,0 +1,90 @@
+<div>
+  <mat-card>
+      <div *ngIf="dashboardSummary">
+          <mat-card-header>
+              <mat-card-title>
+                  Orders
+              </mat-card-title>
+          </mat-card-header>
+          <div class="summary_container" style="background-color: red;">
+              <div class="summary_card">
+                  <div class="label">
+                      <mat-icon> receipt </mat-icon> <span> Upcoming </span>
+                  </div>
+                  <div class="count_number">
+                      {{ dashboardSummary.data.orderUpcomingCount }}
+                  </div>
+              </div>
+              <div class="summary_card">
+                  <div class="label">
+                      <mat-icon> receipt </mat-icon> <span> Delivered Today </span>
+                  </div>
+                  <div class="count_number">
+                      {{ dashboardSummary.data.orderDeliveredCount }}
+                  </div>
+              </div>
+              <div class="summary_card">
+                  <div class="label">
+                      <mat-icon> receipt </mat-icon> <span> Canceled Today </span>
+                  </div>
+                  <div class="count_number">
+                      {{ dashboardSummary.data.orderCancelCount }}
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div *ngIf="dashboardSummary">
+          <mat-card-header>
+              <mat-card-title>
+                  Amount
+              </mat-card-title>
+          </mat-card-header>
+          <div class="summary_container">
+              <div class="summary_card">
+                  <div class="label">
+                      <mat-icon> money </mat-icon> <span> Sales this week </span>
+                  </div>
+                  <div class="count_number">
+                      {{ dashboardSummary.data.thisWeekSaleSum | currency:'INR' }}
+                  </div>
+              </div>
+              <div class="summary_card">
+                  <div class="label">
+                      <mat-icon> money </mat-icon> <span> Today's sales </span>
+                  </div>
+                  <div class="count_number">
+                      {{ dashboardSummary.data.todaysSaleSum | currency:'INR' }}
+                  </div>
+              </div>
+              <div class="summary_card">
+                  <div class="label">
+                      <mat-icon> money </mat-icon> <span> Yesterday's Sales</span>
+                  </div>
+                  <div class="count_number">
+                      {{ dashboardSummary.data.yesterdaysSaleSum | currency:'INR' }}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </mat-card>
+</div>
+
+<div>
+  <mat-card class="list">
+      <div class="list__wrapper">
+          <div class="list__title">  Upcoming Orders </div>
+          <ng-container *ngFor="let order of upcomingOrderList;let i=index">
+              <div class="list__wrapper" *ngIf="i<=5">
+                  <div class="list__row">
+                      <span> {{ order.id }}  </span> 
+                      <span> {{ order.toBeDeliveredOn |date }}</span>
+                      <span> {{ order. custName }} </span>
+                  </div>
+              </div>
+          </ng-container>
+      </div>
+  </mat-card>
+</div>
+
+<div class="u_margin_b">
+</div>
