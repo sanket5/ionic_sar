@@ -1,0 +1,25 @@
+.toolbar_items{
+    display: flex;
+    align-items: center;
+    flex-basis: 100% !important;
+    justify-content: space-between;    
+}
+
+.back_button{
+    flex: 1;
+    display: flex;
+    justify-content: left;
+}
+.banner, .pro {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+
+.inner_content{
+    margin: 2% 5%
+}
+.mat-raised-button{
+    margin: 0 5px;
+}

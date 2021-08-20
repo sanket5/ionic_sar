@@ -1,0 +1,20 @@
+
+
+<div>
+    <div class="error">
+        <div class="error__card">
+            <div class="error__tags">
+                <img src="https://res.cloudinary.com/djvzvheih/image/upload/v1615458014/Comingsoon_Imgs/Sarvedyam_brand_logo_512.png" alt="">
+            </div>
+            <div class="error__content" *ngIf="error">
+                <h3> {{ error.message?error.message:'Some Error Occured !' }}   </h3>
+                <p> We are working to fix and deliver great exprerience to you </p>
+                <button class="error__btn" routerLink="/auth/login"> BACK TO LOGIN </button>
+            </div>
+            <div class="error__content"  *ngIf="!error"  >
+                <h3> Oops!, Page Not Found   </h3>
+                <button class="error__btn" routerLink="/auth/login"> BACK TO LOGIN </button>
+            </div>
+        </div>
+    </div>
+</div>

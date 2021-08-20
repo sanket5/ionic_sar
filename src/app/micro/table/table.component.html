@@ -1,0 +1,71 @@
+
+<div class="table">
+    <!-- <div class="filter" *ngIf="showFilters">
+      <div class="filter_inputs">
+        <ng-container *ngFor="let filter of filterList; let i = index">
+          <mat-form-field *ngIf="i<3"  >
+            <mat-label>{{filter | camelCase}}</mat-label>
+            <input matInput [(ngModel)]="filterObject[filter]">
+          </mat-form-field>
+        </ng-container>
+        <mat-form_field *ngIf="dateFilter" class="example-form-field" appearance="fill">
+          <mat-label> Range </mat-label>
+            <mat-date-range-input
+              [formGroup]="range" 
+              [rangePicker]="picker">
+              <input matStartDate formControlName="start" placeholder="Start date">
+              <input matEndDate formControlName="end" placeholder="End date">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+              </mat-datepicker-actions>
+          
+            </mat-date-range-picker>
+            
+            <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+            <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>                            
+        </mat-form_field>
+      </div>
+      <button mat-button (click)="filterProduct()" > Filter </button>
+      <button mat-button (click)="resetFilter()" > <mat-icon>  close </mat-icon> </button>
+    </div> -->
+    <table class="mat-elevation-z8" mat-table [dataSource]="showList"  matSortActive="name" matSortDirection="asc" matSortDisableClear>
+        <ng-container *ngFor="let column of displayedColumns" matColumnDef="{{column}}"  >
+            <th
+              mat-header-cell 
+              *matHeaderCellDef 
+              maxWidth="20%" 
+              (click)="sort(column)"
+              > {{ column | camelCase }}</th>
+           <!-- <div *ngIf="column == 'actions' ">
+            <td mat-cell *matCellDef="let element"> <button mat-button [routerLink]="[routePath+element.id]"  (click)="log(routePath+element.id)" > Edit </button> </td>
+           </div> -->
+           <div *ngIf="column == 'toBeDeliveredOn' || column == 'leaveDate' || column == 'createdOn'">
+            <td mat-cell *matCellDef="let element"> {{element[column] | date:'dd/MM/yyyy'   }} </td>
+           </div>
+           <div *ngIf="column != 'actions' && column != 'toBeDeliveredOn'  ">
+            <td
+                mat-cell 
+                *matCellDef="let element"
+                [ngClass]="{'cell-highlight-success': validateHighlight(element,column) =='case1' ,
+                'cell-highlight-error': validateHighlight(element,column) == 'case2'
+              }"
+                > {{element[column]}} </td>
+           </div>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)" [ngClass]="{'row-highlight': validateHighlight(row) }" class="cell-width"  ></tr>
+    </table>
+    <mat-card class="no_items" *ngIf="isEmpty">
+      <span> No Items Found </span>
+    </mat-card>
+
+</div>
+<div class="action_button" *ngIf="showPaginator">
+  <button id="pre" mat-button (click)="prePage()"> Previous </button>
+  <div class="paginator">  <input matInput type="number" [(ngModel)]="page" (change)="jumpToPage()" >  of &nbsp;{{lastPageNumber}} </div>
+  <button id="next" mat-button (click)="nextPage()" > Next </button>
+</div>

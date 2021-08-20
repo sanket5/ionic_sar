@@ -9,6 +9,7 @@ import { AdminPageRoutingModule } from './admin-routing.module';
 import { AdminPage } from './admin.page';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MaterialModule } from '../material.modules';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   imports: [
@@ -16,8 +17,8 @@ import { MaterialModule } from '../material.modules';
     FormsModule,
     IonicModule,
     AdminPageRoutingModule,
-    MaterialModule
+    MaterialModule,
   ],
-  declarations: [AdminPage, DashboardComponent]
+  declarations: [AdminPage, DashboardComponent, OrdersComponent]
 })
 export class AdminPageModule {}

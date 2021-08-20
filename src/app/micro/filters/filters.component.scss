@@ -1,0 +1,59 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.filter{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 90%;
+    transform: translateX(5%);
+}
+.action_buttons{
+    margin: -16px 0 5px;
+    padding-bottom: auto;
+    .mat-button{
+        margin: 0 5px;
+    }
+}
+
+mat-form-field{
+    min-width: 130px;
+    max-width: 160px;
+    width: auto;
+    margin: 10px;
+}
+
+.filter_inputs{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.no_items{
+    display: flex;
+    justify-content: center;
+    width: 85%;
+    margin: 0;
+}
+
+
+//custom forces styles to mat inputs
+
+.small_feilds{
+    ::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.4em 0px !important;}
+    ::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
+
+    ::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+    }
+}
+
+.pdfIcon{
+    cursor: pointer;
+    margin-left: auto;
+}

@@ -9,15 +9,15 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthPageModule)
   },
   {
-    path:'', redirectTo:'auth', pathMatch:'full'
-  },
-  {
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
   },
   {
     path: 'v2',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+  },
+  {
+    path:'', redirectTo:'auth', pathMatch:'full'
   }
 ];
 

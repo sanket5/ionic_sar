@@ -1,0 +1,62 @@
+
+<div class="filter small_feilds">
+    <div *ngFor="let filter of filterInputList">
+        <div *ngIf="filter.type == 'string'" >
+            <div *ngTemplateOutlet="inputFeild; context: {filter:filter} ">
+            </div>
+        </div>
+        <div *ngIf="filter.type == 'select'">
+            <div *ngTemplateOutlet="selectFeild; context: {filter:filter} ">
+            </div>
+        </div>
+        <div *ngIf="filter.type == 'date'">
+            <div *ngTemplateOutlet="dateFeild">
+            </div>
+        </div>
+    </div>
+    <div class="action_buttons">
+        <button mat-button (click)="filter()" > Show </button>
+        <button mat-button (click)="resetFilter()" > Clear </button>
+    </div>
+    <div class="pdfIcon">
+        <mat-icon (click)="downloadPdf()" >picture_as_pdf</mat-icon>
+    </div>
+
+</div>
+
+
+<ng-template #inputFeild let-filter="filter" >
+    <mat-form-field appearance="outline">
+        <mat-label>{{ filter.name | camelCase }}</mat-label>
+        <input matInput [(ngModel)]="filterObject[filter.name]">
+    </mat-form-field>
+</ng-template>
+
+<ng-template #selectFeild let-filter="filter" >
+    <mat-form-field appearance="outline">
+        <mat-label>{{filter.name |camelCase}}</mat-label>
+        <mat-select [(ngModel)]="filterObject[filter.name]">
+          <mat-option *ngFor="let option of filter.options" value="{{option}}">{{ option | camelCase }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+</ng-template>
+
+<ng-template #dateFeild>
+    <mat-form-field class="example-form-field" appearance="outline">
+        <mat-label> Range </mat-label>
+          <mat-date-range-input
+            [formGroup]="range" 
+            [rangePicker]="picker">
+            <input matStartDate formControlName="start" placeholder="Start date" required>
+            <input matEndDate formControlName="end" placeholder="End date" required>
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker>
+            <mat-datepicker-actions>
+              <button mat-button matDatepickerCancel>Cancel</button>
+              <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+            </mat-datepicker-actions>
+          </mat-date-range-picker>
+          <mat-error >Invalid start date</mat-error>
+      </mat-form-field>
+</ng-template>

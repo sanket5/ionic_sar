@@ -1,0 +1,22 @@
+<div>
+  <mat-toolbar>
+      <mat-toolbar-row >
+          <div class="toolbar_items">
+              <div class="back_button">
+                  <button mat-raised-button (click)="back()" > <mat-icon> arrow_back </mat-icon> </button>
+              </div>
+              <div class="banner">
+                  <span> Orders </span>
+              </div>
+              <div class="pro">
+                  <button mat-raised-button routerLink="new" > New </button>
+                  <button mat-raised-button routerLink="new" (click)="getOrderSummery()" > Order Summery </button>
+              </div>
+          </div>
+      </mat-toolbar-row> 
+  </mat-toolbar> 
+</div>
+
+<div class="inner_content">
+  <router-outlet></router-outlet>
+</div>

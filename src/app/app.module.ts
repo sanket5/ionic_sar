@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MaterialModule } from './material.modules';
 import { MiscInterceptor } from './interceptors/misc.interceptor';
+import { LoaderInterceptor } from './interceptors/loader.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,9 @@ import { MiscInterceptor } from './interceptors/misc.interceptor';
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: HTTP_INTERCEPTORS, useClass:MiscInterceptor, multi: true
+    },
+    {
+      provide:HTTP_INTERCEPTORS,useClass:LoaderInterceptor, multi:true
     },
   ],
   bootstrap: [AppComponent],

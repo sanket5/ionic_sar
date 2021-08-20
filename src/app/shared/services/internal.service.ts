@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { Order } from '../interface/order.interface';
 import { loginResponse } from '../models/user.model';
 
 @Injectable({
@@ -11,8 +12,8 @@ export class InternalService {
   
   private userType = new Subject<loginResponse>();
   public userReceiver = this.userType.asObservable()
-  // private itemsData = new BehaviorSubject<Order>(null)
-  // public itemsDataReceiver = this.itemsData.asObservable()
+  private itemsData = new BehaviorSubject<Order>(null)
+  public itemsDataReceiver = this.itemsData.asObservable()
   private showNav = new Subject<string>()
   public showNavReceiver = this.showNav.asObservable()
   private error = new Subject<any>()
@@ -25,9 +26,9 @@ export class InternalService {
     this.userType.next(uType)
   }
 
-  // emitItemData(data){
-  //   this.itemsData.next(data)
-  // }
+  emitItemData(data){
+    this.itemsData.next(data)
+  }
   emitError(error){
     this.error.next(error)
   }

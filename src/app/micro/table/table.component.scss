@@ -1,0 +1,84 @@
+@import "../../../scss/global.scss";
+
+$highlightColor : var(--highlightColor);
+$cellHighlightColor : var(--cellHighlightColor);
+
+
+.table{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter{
+    width: 90%;
+}
+
+table{
+    width: 90%;
+    margin: 10px;
+    text-align: left;
+}
+
+.mat-header-cell{
+    font-weight: bolder;
+}
+
+.sortArrow{
+    transform: rotate(90deg);
+    cursor: pointer;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.action_button{
+    display: flex;
+    flex-basis: 90% !important;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 5%;
+}
+.mat-button{
+    margin: 5px;
+}
+
+.mat-row{
+    cursor: pointer;
+}
+
+.paginator{
+    display: flex;
+    align-items: center;
+    input{
+        width: 30px;
+        margin: 0;
+        text-decoration: underline;
+    }
+}
+
+mat-form-field{
+    width: 130px;
+    margin: 10px;
+}
+
+.row-highlight{
+    background-color: rgb(212, 178, 178);
+}
+
+.cell-width td:last-child{
+    width: 200px;
+}
+
+.cell-highlight-success{
+    color: green;
+    font-weight: bolder;
+}
+.cell-highlight-error{
+   color: red;
+   font-weight: bolder;
+}
+
+th{
+    cursor: pointer;
+}
